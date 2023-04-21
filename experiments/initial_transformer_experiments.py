@@ -11,7 +11,7 @@ from sklearn.model_selection import train_test_split
 
 from experiments.evaluation import macro_f1, weighted_f1, sentence_label_evaluation, print_evaluation
 from experiments.label_converter import encode, decode
-from experiments.transformer_config import transformer_args, SEED
+from experiments.transformer_config import transformer_args, SEED, TEMP_DIRECTORY
 from text_classification.text_classification_model import TextClassificationModel
 
 parser = argparse.ArgumentParser(
@@ -86,4 +86,5 @@ test['predictions'] = decode(test["predictions"])
 test['labels'] = decode(test["labels"])
 
 print_evaluation(test, "predictions", "labels")
+test.to_csv("results.tsv", sep='\t', encoding='utf-8', index=False)
 

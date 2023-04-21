@@ -1,6 +1,6 @@
 from multiprocessing import cpu_count
 
-TEMP_DIRECTORY = "temp/text_classification/"
+TEMP_DIRECTORY = "temp/"
 SEED = 777
 
 
