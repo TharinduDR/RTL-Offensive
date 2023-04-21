@@ -8,6 +8,7 @@ import pandas as pd
 import sklearn
 from sklearn.model_selection import train_test_split
 
+from experiments.evaluation import sentence_label_evaluation
 from experiments.transformer_config import transformer_args, SEED
 from text_classification.text_classification_model import TextClassificationModel
 
