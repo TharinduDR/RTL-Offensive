@@ -5,6 +5,8 @@
 .idea
 .ipynb_checkpoints
 
+data/
+
 
 .idea/**/workspace.xml
 .idea/**/tasks.xml
