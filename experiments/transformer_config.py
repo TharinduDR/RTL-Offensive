@@ -25,15 +25,15 @@ transformer_args = {
     'do_lower_case': False,
     'n_fold': 5,
 
-    'logging_steps': 5000,
-    'save_steps': 5000,
+    'logging_steps': 4000,
+    'save_steps': 4000,
     "no_cache": False,
     "no_save": False,
     "save_recent_only": True,
     'save_model_every_epoch': False,
     'evaluate_during_training': True,
     "evaluate_during_training_silent": True,
-    'evaluate_during_training_steps': 5000,
+    'evaluate_during_training_steps': 4000,
     "evaluate_during_training_verbose": True,
     'use_cached_eval_features': False,
     "save_best_model": True,
@@ -50,7 +50,7 @@ transformer_args = {
     "multiprocessing_chunksize": 500,
     'silent': False,
 
-    'wandb_project': None,
+    'wandb_project': "RTL-Offense",
     'wandb_kwargs': {},
 
     "use_early_stopping": True,
