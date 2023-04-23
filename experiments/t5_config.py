@@ -13,9 +13,9 @@ t5_args = {
     'fp16_opt_level': 'O1',
     'max_seq_length': 256,  # 128
     'max_length': 20,  # 128
-    'train_batch_size': 32,
+    'train_batch_size': 16,
     'gradient_accumulation_steps': 1,
-    'eval_batch_size': 64,
+    'eval_batch_size': 32,
     'num_train_epochs': 5,
     'learning_rate': 1e-5,
     'do_lower_case': False,
