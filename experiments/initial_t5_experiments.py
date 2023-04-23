@@ -9,17 +9,15 @@ import numpy as np
 import sklearn
 from sklearn.model_selection import train_test_split
 
-from experiments.evaluation import macro_f1, weighted_f1, sentence_label_evaluation, print_evaluation
-from experiments.label_converter import encode, decode
-from experiments.t5_config import t5_args, SEED, TEMP_DIRECTORY
+from experiments.evaluation import sentence_label_evaluation, print_evaluation
+from experiments.t5_config import t5_args, SEED
 from t5.t5_model import T5Model
 
-# from text_classification.text_classification_model import TextClassificationModel
 
 parser = argparse.ArgumentParser(
     description='''evaluates multiple models  ''')
-parser.add_argument('--model_name', required=False, help='model name', default="google/byt5-large")
-parser.add_argument('--model_type', required=False, help='model type', default="byt5")
+parser.add_argument('--model_name', required=False, help='model name', default="google/mt5-large")
+parser.add_argument('--model_type', required=False, help='model type', default="mt5")
 parser.add_argument('--cuda_device', required=False, help='cuda device', default=0)
 
 arguments = parser.parse_args()
