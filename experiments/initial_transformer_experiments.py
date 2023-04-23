@@ -62,6 +62,7 @@ for i in range(transformer_args["n_fold"]):
     model.train_model(train_df, eval_df=eval_df, macro_f1=macro_f1, weighted_f1=weighted_f1,
                       accuracy=sklearn.metrics.accuracy_score)
     predictions, raw_outputs = model.predict(test_sentences)
+    test_preds[:, i] = predictions
     macro_f1, weighted_f1 = sentence_label_evaluation(predictions, test['labels'].tolist())
     macro_f1_scores.append(macro_f1)
     weighted_f1_scores.append(weighted_f1)

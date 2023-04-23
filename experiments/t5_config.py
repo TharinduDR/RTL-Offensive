@@ -12,16 +12,12 @@ t5_args = {
     'fp16': False,
     'fp16_opt_level': 'O1',
     'max_seq_length': 256,  # 128
+    'max_length': 20,  # 128
     'train_batch_size': 32,
     'gradient_accumulation_steps': 1,
     'eval_batch_size': 64,
-    'num_train_epochs': 3,
-    'weight_decay': 0,
+    'num_train_epochs': 5,
     'learning_rate': 1e-5,
-    'adam_epsilon': 1e-8,
-    'warmup_ratio': 0.06,
-    'warmup_steps': 0,
-    'max_grad_norm': 1.0,
     'do_lower_case': False,
     'n_fold': 3,
 
@@ -46,7 +42,7 @@ t5_args = {
 
     'process_count': cpu_count() - 2 if cpu_count() > 2 else 1,
     'n_gpu': 1,
-    'use_multiprocessing': True,
+    'use_multiprocessing': False,
     "multiprocessing_chunksize": 500,
     'silent': False,
 

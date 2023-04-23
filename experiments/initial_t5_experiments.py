@@ -45,8 +45,9 @@ train["prefix"] = ""
 test = test.rename(columns={'status': 'labels'})
 test = test[['text', 'labels']]
 
-test_sentences = test['text'].tolist()
-
+test_sentences = []
+for index, row in test.iterrows():
+    test_sentences.append("" + row['text'])
 
 test_preds = np.empty((len(test_sentences), t5_args["n_fold"]))
 macro_f1_scores = []
@@ -61,32 +62,32 @@ for i in range(t5_args["n_fold"]):
                                 use_cuda=torch.cuda.is_available())
     train_df, eval_df = train_test_split(train, test_size=0.1, random_state=SEED * i)
 
-#     model.train_model(train_df, eval_df=eval_df, macro_f1=macro_f1, weighted_f1=weighted_f1,
-#                       accuracy=sklearn.metrics.accuracy_score)
-#     predictions, raw_outputs = model.predict(test_sentences)
-#     macro_f1, weighted_f1 = sentence_label_evaluation(predictions, test['labels'].tolist())
-#     macro_f1_scores.append(macro_f1)
-#     weighted_f1_scores.append(weighted_f1)
-#
-# print("Weighted F1 scores ", weighted_f1_scores)
-# print("Mean weighted F1 scores", statistics.mean(weighted_f1_scores))
-# print("STD weighted F1 scores", statistics.stdev(weighted_f1_scores))
-#
-# print("Macro F1 scores ", macro_f1_scores)
-# print("Mean macro F1 scores", statistics.mean(macro_f1_scores))
-# print("STD macro F1 scores", statistics.stdev(macro_f1_scores))
-#
-# # select majority class of each instance (row)
-# test_predictions = []
-# for row in test_preds:
-#     row = row.tolist()
-#     test_predictions.append(int(max(set(row), key=row.count)))
-#
-# test["predictions"] = test_predictions
-#
-# test['predictions'] = decode(test["predictions"])
-# test['labels'] = decode(test["labels"])
-#
-# print_evaluation(test, "predictions", "labels")
-# test.to_csv("results.tsv", sep='\t', encoding='utf-8', index=False)
+    model.train_model(train_df, eval_data=eval_df)
+
+    preds = model.predict(test_sentences)
+    test_preds[:, i] = preds
+    macro_f1, weighted_f1 = sentence_label_evaluation(preds, test['labels'].tolist())
+    macro_f1_scores.append(macro_f1)
+    weighted_f1_scores.append(weighted_f1)
+
+
+print("Weighted F1 scores ", weighted_f1_scores)
+print("Mean weighted F1 scores", statistics.mean(weighted_f1_scores))
+print("STD weighted F1 scores", statistics.stdev(weighted_f1_scores))
+
+print("Macro F1 scores ", macro_f1_scores)
+print("Mean macro F1 scores", statistics.mean(macro_f1_scores))
+print("STD macro F1 scores", statistics.stdev(macro_f1_scores))
+
+# select majority class of each instance (row)
+test_predictions = []
+for row in test_preds:
+    row = row.tolist()
+    test_predictions.append(max(set(row), key=row.count))
+
+test["predictions"] = test_predictions
+
+
+print_evaluation(test, "predictions", "labels")
+test.to_csv("results_t5.tsv", sep='\t', encoding='utf-8', index=False)
 
