@@ -191,6 +191,6 @@ class T5Args(ModelArgs):
     special_tokens_list: list = field(default_factory=list)
     top_k: float = None
     top_p: float = None
-    use_multiprocessed_decoding: bool = True
+    use_multiprocessed_decoding: bool = False
 
 
