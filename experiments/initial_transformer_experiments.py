@@ -69,9 +69,9 @@ for i in range(transformer_args["n_fold"]):
                       accuracy=sklearn.metrics.accuracy_score)
     predictions, raw_outputs = model.predict(test_sentences)
     test_preds[:, i] = predictions
-    macro_f1, weighted_f1 = sentence_label_evaluation(predictions, test['labels'].tolist())
-    macro_f1_scores.append(macro_f1)
-    weighted_f1_scores.append(weighted_f1)
+    macro_f1_score, weighted_f1_score = sentence_label_evaluation(predictions, test['labels'].tolist())
+    macro_f1_scores.append(macro_f1_score)
+    weighted_f1_scores.append(weighted_f1_score)
 
 print("Weighted F1 scores ", weighted_f1_scores)
 print("Mean weighted F1 scores", statistics.mean(weighted_f1_scores))
