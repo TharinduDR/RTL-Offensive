@@ -47,8 +47,9 @@ test = test[['text', 'labels']]
 train['labels'] = encode(train["labels"])
 test['labels'] = encode(test["labels"])
 
-train = train.head(10000)
-test = test.head(10000)
+train = train.sample(n=10000)
+test = test.sample(n=10000)
+
 
 test_sentences = test['text'].tolist()
 
