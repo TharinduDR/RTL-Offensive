@@ -25,8 +25,8 @@ transformer_args = {
     'do_lower_case': False,
     'n_fold': 3,
 
-    'logging_steps': 80,
-    'save_steps': 80,
+    'logging_steps': 8000,
+    'save_steps': 8000,
     "no_cache": False,
     "no_save": False,
     "save_recent_only": True,
