@@ -1,13 +1,13 @@
 from multiprocessing import cpu_count
 
-TEMP_DIRECTORY = "temp_2010/"
+TEMP_DIRECTORY = "temp_2012/"
 SEED = 777
 
 
 transformer_args = {
-    'output_dir': 'temp_2010/outputs/',
-    "best_model_dir": "temp_2010/outputs/best_model",
-    'cache_dir': 'temp_2010/cache_dir/',
+    'output_dir': 'temp_2012/outputs/',
+    "best_model_dir": "temp_2012/outputs/best_model",
+    'cache_dir': 'temp_2012/cache_dir/',
 
     'fp16': False,
     'fp16_opt_level': 'O1',
@@ -25,15 +25,15 @@ transformer_args = {
     'do_lower_case': False,
     'n_fold': 3,
 
-    'logging_steps': 400,
-    'save_steps': 400,
+    'logging_steps': 1000,
+    'save_steps': 1000,
     "no_cache": False,
     "no_save": False,
     "save_recent_only": True,
     'save_model_every_epoch': False,
     'evaluate_during_training': True,
     "evaluate_during_training_silent": True,
-    'evaluate_during_training_steps': 400,
+    'evaluate_during_training_steps': 1000,
     "evaluate_during_training_verbose": True,
     'use_cached_eval_features': False,
     "save_best_model": True,
