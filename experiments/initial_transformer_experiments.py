@@ -27,6 +27,8 @@ MODEL_NAME = arguments.model_name
 cuda_device = int(arguments.cuda_device)
 
 data_df = pd.read_json('data/rtl_comments_clean_2022-10.json')
+
+
 data_df_clean = data_df[data_df.status.isin(["Published", "Archived"])]
 data_df_clean['date_created'] = pd.to_datetime(data_df_clean['date_created'])
 
@@ -44,6 +46,9 @@ test = test[['text', 'labels']]
 
 train['labels'] = encode(train["labels"])
 test['labels'] = encode(test["labels"])
+
+train = train.head(10000)
+test = test.head(10000)
 
 test_sentences = test['text'].tolist()
 
