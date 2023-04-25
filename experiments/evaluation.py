@@ -17,7 +17,7 @@ def print_evaluation(df, pred_column, real_column):
     predictions = df[pred_column].tolist()
     real_values = df[real_column].tolist()
 
-    labels = set(predictions)
+    labels = set(real_values)
 
     for label in labels:
         print()
