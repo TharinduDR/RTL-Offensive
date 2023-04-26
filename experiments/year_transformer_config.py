@@ -1,13 +1,13 @@
 from multiprocessing import cpu_count
 
-TEMP_DIRECTORY = "temp_2012/"
+TEMP_DIRECTORY = "temp_2013/"
 SEED = 777
 
 
 transformer_args = {
-    'output_dir': 'temp_2012/outputs/',
-    "best_model_dir": "temp_2012/outputs/best_model",
-    'cache_dir': 'temp_2012/cache_dir/',
+    'output_dir': 'temp_2013/outputs/',
+    "best_model_dir": "temp_2013/outputs/best_model",
+    'cache_dir': 'temp_2013/cache_dir/',
 
     'fp16': False,
     'fp16_opt_level': 'O1',
