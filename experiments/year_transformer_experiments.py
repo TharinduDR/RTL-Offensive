@@ -90,5 +90,5 @@ test['predictions'] = decode(test["predictions"])
 test['labels'] = decode(test["labels"])
 
 print_evaluation(test, "predictions", "labels")
-test.to_csv("results_2021_LuxemBERT.tsv", sep='\t', encoding='utf-8', index=False)
+test.to_csv("results_2020_LuxemBERT.tsv", sep='\t', encoding='utf-8', index=False)
 
