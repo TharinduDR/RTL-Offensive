@@ -35,7 +35,7 @@ data_df_clean['date_created'] = pd.to_datetime(data_df_clean['date_created'])
 # Extract year and use 2022 data to create a test set.
 data_df_clean['year'] = data_df_clean['date_created'].dt.year
 
-train = data_df_clean[(data_df_clean["year"] == 2016)]
+train = data_df_clean[(data_df_clean["year"] == 2015)]
 test = data_df_clean[(data_df_clean["year"] == 2022)]
 
 train = train.rename(columns={'status': 'labels'})
@@ -90,5 +90,5 @@ test['predictions'] = decode(test["predictions"])
 test['labels'] = decode(test["labels"])
 
 print_evaluation(test, "predictions", "labels")
-test.to_csv("results_2016.tsv", sep='\t', encoding='utf-8', index=False)
+test.to_csv("results_2015.tsv", sep='\t', encoding='utf-8', index=False)
 
