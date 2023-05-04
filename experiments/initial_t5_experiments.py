@@ -16,7 +16,7 @@ from t5.t5_model import T5Model
 
 parser = argparse.ArgumentParser(
     description='''evaluates multiple models  ''')
-parser.add_argument('--model_name', required=False, help='model name', default="google/mt5-large")
+parser.add_argument('--model_name', required=False, help='model name', default="google/mt5-base")
 parser.add_argument('--model_type', required=False, help='model type', default="mt5")
 parser.add_argument('--cuda_device', required=False, help='cuda device', default=0)
 
@@ -87,5 +87,5 @@ test["predictions"] = test_predictions
 
 
 print_evaluation(test, "predictions", "labels")
-test.to_csv("results_t5.tsv", sep='\t', encoding='utf-8', index=False)
+test.to_csv("results_t5_base.tsv", sep='\t', encoding='utf-8', index=False)
 

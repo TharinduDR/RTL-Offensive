@@ -1,25 +1,25 @@
 from multiprocessing import cpu_count
 
-TEMP_DIRECTORY = "temp_t5/"
+TEMP_DIRECTORY = "temp_t5_base/"
 SEED = 777
 
 
 t5_args = {
-    'output_dir': 'temp_t5/outputs/',
-    "best_model_dir": "temp_t5/outputs/best_model",
-    'cache_dir': 'temp_t5/cache_dir/',
+    'output_dir': 'temp_t5_base/outputs/',
+    "best_model_dir": "temp_t5_base/outputs/best_model",
+    'cache_dir': 'temp_t5_base/cache_dir/',
 
     'fp16': False,
     'fp16_opt_level': 'O1',
     'max_seq_length': 256,  # 128
     'max_length': 20,  # 128
-    'train_batch_size': 8,
+    'train_batch_size': 16,
     'gradient_accumulation_steps': 1,
     'eval_batch_size': 16,
     'num_train_epochs': 5,
-    'learning_rate': 1e-5,
+    'learning_rate': 1e-3,
     'do_lower_case': False,
-    'n_fold': 3,
+    'n_fold': 1,
 
     'logging_steps': 16000,
     'save_steps': 16000,
