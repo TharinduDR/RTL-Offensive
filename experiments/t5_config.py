@@ -16,7 +16,7 @@ t5_args = {
     'train_batch_size': 16,
     'gradient_accumulation_steps': 1,
     'eval_batch_size': 16,
-    'num_train_epochs': 5,
+    'num_train_epochs': 3,
     'learning_rate': 1e-3,
     'do_lower_case': False,
     'n_fold': 1,
