@@ -10,6 +10,7 @@ import sklearn
 from sklearn.model_selection import train_test_split
 
 from experiments.evaluation import sentence_label_evaluation, print_evaluation
+from experiments.label_converter import encode, decode
 from experiments.t5_config import t5_args, SEED
 from t5.t5_model import T5Model
 
@@ -47,7 +48,7 @@ test_sentences = []
 for index, row in test.iterrows():
     test_sentences.append("" + row['text'])
 
-test_preds = np.empty((len(test_sentences), t5_args["n_fold"]))
+test_preds = np.zeros((len(test_sentences), t5_args["n_fold"]))
 macro_f1_scores = []
 weighted_f1_scores = []
 
@@ -63,10 +64,11 @@ for i in range(t5_args["n_fold"]):
     model.train_model(train_df, eval_data=eval_df)
 
     preds = model.predict(test_sentences)
-    test_preds[:, i] = preds
     macro_f1, weighted_f1 = sentence_label_evaluation(preds, test['labels'].tolist())
     macro_f1_scores.append(macro_f1)
     weighted_f1_scores.append(weighted_f1)
+    preds = encode(preds)
+    test_preds[:, i] = preds
 
 
 print("Weighted F1 scores ", weighted_f1_scores)
@@ -81,10 +83,9 @@ print("STD macro F1 scores", statistics.stdev(macro_f1_scores))
 test_predictions = []
 for row in test_preds:
     row = row.tolist()
-    test_predictions.append(max(set(row), key=row.count))
+    test_predictions.append(int(max(set(row), key=row.count)))
 
-test["predictions"] = test_predictions
-
+test["predictions"] = decode(test_predictions)
 
 print_evaluation(test, "predictions", "labels")
 test.to_csv("results_t5_base.tsv", sep='\t', encoding='utf-8', index=False)
