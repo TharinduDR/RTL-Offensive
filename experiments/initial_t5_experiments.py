@@ -34,7 +34,7 @@ data_df_clean['date_created'] = pd.to_datetime(data_df_clean['date_created'])
 # Extract year and use 2022 data to create a test set.
 data_df_clean['year'] = data_df_clean['date_created'].dt.year
 
-train = data_df_clean[(data_df_clean["year"] != 2022)].head(10000)
+train = data_df_clean[(data_df_clean["year"] != 2022)]
 test = data_df_clean[(data_df_clean["year"] == 2022)]
 
 train = train.rename(columns={'text': 'input_text', 'status': 'target_text'})
