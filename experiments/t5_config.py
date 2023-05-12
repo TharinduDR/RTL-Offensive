@@ -1,13 +1,13 @@
 from multiprocessing import cpu_count
 
-TEMP_DIRECTORY = "temp_t5_base/"
+TEMP_DIRECTORY = "temp_byt5_base/"
 SEED = 777
 
 
 t5_args = {
-    'output_dir': 'temp_t5_base/outputs/',
-    "best_model_dir": "temp_t5_base/outputs/best_model",
-    'cache_dir': 'temp_t5_base/cache_dir/',
+    'output_dir': 'temp_byt5_base/outputs/',
+    "best_model_dir": "temp_byt5_base/outputs/best_model",
+    'cache_dir': 'temp_byt5_base/cache_dir/',
 
     'fp16': False,
     'fp16_opt_level': 'O1',
