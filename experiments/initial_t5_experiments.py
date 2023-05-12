@@ -88,5 +88,5 @@ for row in test_preds:
 test["predictions"] = decode(test_predictions)
 
 print_evaluation(test, "predictions", "labels")
-test.to_csv("results_t5_base.tsv", sep='\t', encoding='utf-8', index=False)
+test.to_csv("results_byt5_base.tsv", sep='\t', encoding='utf-8', index=False)
 
