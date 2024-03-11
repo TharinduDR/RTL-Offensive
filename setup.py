@@ -11,7 +11,7 @@ setup(
     description="Transformer based comment moderation Luxembourgish",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/TharinduDR/Lux-Headline-Generation",
+    url="https://github.com/TharinduDR/RTL-Offensive",
     packages=find_packages(exclude=("experiments" )),
     classifiers=[
         "Intended Audience :: Science/Research",
