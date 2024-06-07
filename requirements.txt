@@ -10,3 +10,4 @@ seqeval
 wandb
 sentencepiece
 spacy
+datasets
