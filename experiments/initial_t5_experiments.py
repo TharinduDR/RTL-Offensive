@@ -63,6 +63,9 @@ model_args.wandb_kwargs = {"name": MODEL_NAME}
 train = Dataset.to_pandas(load_dataset('instilux/lb-rtl-comments_clas', split='train'))
 test = Dataset.to_pandas(load_dataset('instilux/lb-rtl-comments_clas', split='test'))
 
+train = train[train['text'].notna()]
+test = test[test['text'].notna()]
+
 train = train.rename(columns={'text': 'input_text', 'label': 'target_text'})
 train = train[['input_text', 'target_text']]
 train["prefix"] = ""
